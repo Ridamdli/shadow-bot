@@ -1,0 +1,8 @@
+nautilus_trader>=1.200
+vectorbt>=0.26
+fastapi>=0.110
+uvicorn>=0.29
+pandas>=2.0
+numpy>=1.26
+requests>=2.31
+python-dotenv>=1.0

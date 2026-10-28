@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shadow Bot</title>
+<style>
+  :root { --bg:#0e1116; --card:#171b22; --line:#262c36; --tx:#e6e9ef; --mut:#8b94a3;
+          --ok:#2fbf71; --bad:#e5534b; --warn:#d9a441; --acc:#4c8dff; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--tx); font:15px/1.5 system-ui,Segoe UI,Tahoma,sans-serif; }
+  header { display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid var(--line); }
+  h1 { font-size:18px; margin:0; }
+  main { max-width:960px; margin:0 auto; padding:16px; display:grid; gap:14px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px; }
+  .card h2 { margin:0 0 10px; font-size:14px; color:var(--mut); font-weight:600; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; }
+  .kpi small { color:var(--mut); display:block; }
+  .kpi b { font-size:20px; direction:ltr; display:inline-block; }
+  .pos { color:var(--ok); } .neg { color:var(--bad); }
+  .pill { padding:2px 10px; border-radius:99px; font-size:12px; background:var(--line); }
+  .pill.on { background:#16382a; color:var(--ok); } .pill.off { background:#3a1b19; color:var(--bad); }
+  .pill.warn { background:#3b2f14; color:var(--warn); }
+  .row { display:flex; flex-wrap:wrap; gap:8px; }
+  button { background:var(--line); color:var(--tx); border:0; border-radius:8px; padding:9px 14px; font:inherit; cursor:pointer; }
+  button:hover { filter:brightness(1.2); }
+  button.go { background:#1d5a3b; } button.stop { background:#6b2420; } button.acc { background:#244a8a; }
+  label { display:block; font-size:12px; color:var(--mut); }
+  input { width:100%; background:#0e1116; color:var(--tx); border:1px solid var(--line); border-radius:6px; padding:7px; font:inherit; direction:ltr; }
+  .form { display:grid; grid-template-columns:repeat(auto-fit,minmax(110px,1fr)); gap:10px; margin-bottom:10px; }
+  table { width:100%; border-collapse:collapse; direction:ltr; font-size:13px; }
+  th,td { padding:6px 8px; border-bottom:1px solid var(--line); text-align:right; white-space:nowrap; }
+  .scroll { overflow-x:auto; }
+  pre { margin:0; max-height:220px; overflow:auto; font-size:12px; direction:ltr; text-align:left; color:var(--mut); white-space:pre-wrap; }
+  .warnbox { background:#3b2f14; color:var(--warn); border-radius:8px; padding:8px 12px; font-size:13px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Shadow Bot · لوحة التحكم</h1>
+  <span id="conn" class="pill off">غير متصل</span>
+</header>
+<main>
+  <div id="alert"></div>
+
+  <section class="card">
+    <h2>الحالة</h2>
+    <div class="grid">
+      <div class="kpi"><small>البوت</small><span id="bot" class="pill off">متوقف</span></div>
+      <div class="kpi"><small>السعر</small><b id="price">-</b></div>
+      <div class="kpi"><small>المركز</small><b id="side">-</b></div>
+      <div class="kpi"><small>المستوى</small><b id="level">-</b></div>
+      <div class="kpi"><small>وقف الخسارة</small><b id="stop">-</b></div>
+      <div class="kpi"><small>ربح غير محقق</small><b id="upnl">-</b></div>
+      <div class="kpi"><small>ربح اليوم</small><b id="dpnl">-</b></div>
+      <div class="kpi"><small>إجمالي / صفقات</small><b id="tpnl">-</b></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>التحكم</h2>
+    <div class="row" style="margin-bottom:12px">
+      <button class="acc" onclick="cmd('pause')">إيقاف مؤقت (لا صفقات جديدة)</button>
+      <button class="go" onclick="cmd('resume')">استئناف</button>
+      <button class="stop" onclick="if(confirm('إغلاق كل المراكز والأوامر الآن؟')) cmd('flatten')">إغلاق طارئ</button>
+    </div>
+    <div class="form">
+      <div><label>الرمز</label><input id="p_symbol" value="BTCUSDT"></div>
+      <div><label>الحجم (BTC)</label><input id="p_size" type="number" step="0.001" value="0.002"></div>
+      <div><label>مسافة الدخول %</label><input id="p_offset" type="number" step="0.05" value="0.30"></div>
+      <div><label>Trailing %</label><input id="p_trail" type="number" step="0.05" value="0.40"></div>
+      <div><label>خطوة Grid %</label><input id="p_grid" type="number" step="0.05" value="0.30"></div>
+      <div><label>أقصى مستويات</label><input id="p_levels" type="number" value="3"></div>
+      <div><label>حد خسارة يومي USDT</label><input id="p_mdl" type="number" value="20"></div>
+    </div>
+    <div class="row">
+      <button class="go" onclick="startBot()">تشغيل البوت (Testnet)</button>
+      <button class="stop" onclick="stopBot()">إيقاف البوت</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>الأبحاث (VectorBT)</h2>
+    <div class="row" style="margin-bottom:10px">
+      <button onclick="research('fetch')">1) تنزيل البيانات (90 يوم)</button>
+      <button class="acc" onclick="research('sweep')">2) تشغيل مسح المعاملات</button>
+      <button onclick="loadTop()">تحديث النتائج</button>
+    </div>
+    <div class="scroll"><table id="top"><tbody><tr><td>لا نتائج بعد</td></tr></tbody></table></div>
+    <p style="color:var(--mut);font-size:12px;margin:8px 0 0">النتائج المعروضة رابحة في فترة التدريب وفترة الاختبار معًا. أكّدها بـ backtest.py قبل التشغيل.</p>
+  </section>
+
+  <section class="card">
+    <h2>السجلات</h2>
+    <div class="row" style="margin-bottom:8px">
+      <button onclick="log='bot';loadLog()">البوت</button>
+      <button onclick="log='fetch';loadLog()">التنزيل</button>
+      <button onclick="log='sweep';loadLog()">المسح</button>
+    </div>
+    <pre id="log"></pre>
+  </section>
+</main>
+
+<script>
+let log = 'bot';
+const $ = id => document.getElementById(id);
+const fmt = (n, d=2) => (n===null||n===undefined) ? '-' : Number(n).toLocaleString('en', {maximumFractionDigits:d});
+const sign = (el, v) => { el.textContent = fmt(v); el.className = v>0?'pos':v<0?'neg':''; };
+
+async function api(path, method='GET', body) {
+  const r = await fetch(path, {method, headers:{'Content-Type':'application/json'}, body: body?JSON.stringify(body):undefined});
+  if (!r.ok) { let m = r.statusText; try { m = (await r.json()).detail || m; } catch(e){}
+    alert(typeof m === 'string' ? m : JSON.stringify(m)); throw new Error(m); }
+  return r.json();
+}
+
+async function refresh() {
+  try {
+    const d = await api('/api/state');
+    const s = d.state || {};
+    $('conn').textContent = 'متصل'; $('conn').className = 'pill on';
+    const run = d.bot_running;
+    $('bot').textContent = !run ? 'متوقف' : s.paused ? 'موقوف مؤقتًا' : 'يعمل';
+    $('bot').className = 'pill ' + (!run ? 'off' : s.paused ? 'warn' : 'on');
+    $('price').textContent = fmt(s.price);
+    $('side').textContent = s.side ? (s.side==='BUY'?'شراء':'بيع') + ' ' + fmt(s.qty,4) : 'بلا مركز';
+    $('level').textContent = s.level ?? '-';
+    $('stop').textContent = fmt(s.stop_price);
+    sign($('upnl'), s.unrealized_pnl); sign($('dpnl'), s.daily_pnl);
+    $('tpnl').textContent = fmt(s.total_pnl) + ' / ' + (s.closed_trades ?? 0);
+    let msg = '';
+    if (s.killed) msg = 'تم تفعيل قاطع الأمان: ' + s.kill_reason + ' - لا صفقات جديدة حتى بداية اليوم التالي (UTC).';
+    else if (run && d.state_age_s > 15) msg = 'لا تحديثات من البوت منذ ' + Math.round(d.state_age_s) + ' ثانية - تحقق من السجلات.';
+    $('alert').innerHTML = msg ? '<div class="warnbox">'+msg+'</div>' : '';
+  } catch(e) { $('conn').textContent = 'غير متصل'; $('conn').className = 'pill off'; }
+}
+
+const cmd = c => api('/api/command','POST',{cmd:c}).then(refresh);
+const startBot = () => api('/api/bot/start','POST',{
+  symbol:$('p_symbol').value.trim().toUpperCase(), size:+$('p_size').value, offset:+$('p_offset').value,
+  trail:+$('p_trail').value, grid:+$('p_grid').value, levels:+$('p_levels').value,
+  max_daily_loss:+$('p_mdl').value, mainnet:false}).then(refresh);
+const stopBot = () => api('/api/bot/stop','POST').then(refresh);
+const research = k => api('/api/research/'+k,'POST',{symbol:$('p_symbol').value.trim().toUpperCase(), days:90}).then(()=>{log=k;loadLog();});
+
+async function loadTop() {
+  const rows = await api('/api/research/top');
+  if (!rows.length) { $('top').innerHTML = '<tbody><tr><td>لا نتائج بعد</td></tr></tbody>'; return; }
+  const cols = ['offset_pct','trail_pct','in_return_pct','out_return_pct','out_sharpe','out_max_dd_pct','out_trades'];
+  $('top').innerHTML = '<thead><tr>'+cols.map(c=>'<th>'+c+'</th>').join('')+'</tr></thead><tbody>'
+    + rows.map(r=>'<tr>'+cols.map(c=>'<td>'+fmt(r[c])+'</td>').join('')+'</tr>').join('') + '</tbody>';
+}
+async function loadLog() { const d = await api('/api/logs/'+log); $('log').textContent = d.lines.join('\n'); }
+
+refresh(); loadTop(); loadLog();
+setInterval(refresh, 2000);
+setInterval(loadLog, 5000);
+</script>
+</body>
+</html>
