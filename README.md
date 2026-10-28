@@ -13,9 +13,19 @@ straddle of stop orders -> one fills, the other is cancelled -> trailing stop ->
 
 ## Setup (Python 3.12+)
 ```
+git clone --recurse-submodules https://github.com/Ridamdli/shadow-bot.git
+cd shadow-bot
 pip install -r requirements.txt
 cp .env.example .env      # add TESTNET keys from https://testnet.binancefuture.com
 ```
+
+For an existing checkout, initialize the pinned Kronos source with
+`git submodule update --init --recursive`. To run the optional research
+forecaster, install its dependencies with
+`python -m pip install -r requirements-kronos.txt`. The first forecast downloads
+and caches `NeoQuasar/Kronos-small` and its tokenizer from Hugging Face.
+Forecasts are research-only and are not connected to the strategy or live
+trading.
 
 ## Workflow (do it in this order)
 1. `python research/fetch_data.py --symbol BTCUSDT --days 90`
