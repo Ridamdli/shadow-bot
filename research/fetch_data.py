@@ -23,14 +23,20 @@ def fetch(symbol: str, interval: str, days: int) -> pd.DataFrame:
     while cur < end:
         r = requests.get(
             URL,
-            params={"symbol": symbol, "interval": interval, "startTime": cur, "limit": 1500},
+            params={
+                "symbol": symbol,
+                "interval": interval,
+                "startTime": cur,
+                "endTime": end - 1,
+                "limit": 1500,
+            },
             timeout=30,
         )
         r.raise_for_status()
         batch = r.json()
         if not batch:
             break
-        rows.extend(batch)
+        rows.extend(row for row in batch if start <= row[0] < end)
         cur = batch[-1][0] + 1
         time.sleep(0.2)  # stay far below rate limits
     df = pd.DataFrame(
