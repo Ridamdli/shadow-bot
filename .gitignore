@@ -9,4 +9,7 @@ __pycache__/
 
 data/*.csv
 data/*.log
-graphify-out/
+graphify-out/cache/
+graphify-out/20??-??-??/
+graphify-out/.graphify_python
+graphify-out/.graphify_root

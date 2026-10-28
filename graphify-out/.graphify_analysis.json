@@ -1,0 +1,324 @@
+{
+  "communities": {
+    "0": [
+      "backtest",
+      "backtest_rationale_1",
+      "datetime",
+      "decimal",
+      "dotenv",
+      "nautilus_trader_adapters_binance",
+      "nautilus_trader_adapters_binance_common_enums",
+      "nautilus_trader_backtest_engine",
+      "nautilus_trader_config",
+      "nautilus_trader_live_node",
+      "nautilus_trader_model_currencies",
+      "nautilus_trader_model_data",
+      "nautilus_trader_model_enums",
+      "nautilus_trader_model_events",
+      "nautilus_trader_model_identifiers",
+      "nautilus_trader_model_objects",
+      "nautilus_trader_test_kit_providers",
+      "nautilus_trader_trading_strategy",
+      "run_live",
+      "run_live_main",
+      "run_live_rationale_1",
+      "shadow_bot_init",
+      "shadow_bot_strategy",
+      "shadow_bot_strategy_rationale_1",
+      "shadow_bot_strategy_shadowconfig",
+      "shadow_bot_strategy_shadowstrategy_init",
+      "shadow_timemachine_integration_plan_and_prompt_en_day_trader_skill",
+      "shadow_timemachine_integration_plan_and_prompt_en_nautilus_trader",
+      "strategyconfig",
+      "sys"
+    ],
+    "1": [
+      "bar",
+      "orderfilled",
+      "orderrejected",
+      "orderside",
+      "positionclosed",
+      "shadow_bot_control_read_command",
+      "shadow_bot_strategy_rationale_195",
+      "shadow_bot_strategy_shadowstrategy",
+      "shadow_bot_strategy_shadowstrategy_cancel_straddle",
+      "shadow_bot_strategy_shadowstrategy_flatten",
+      "shadow_bot_strategy_shadowstrategy_manage_position",
+      "shadow_bot_strategy_shadowstrategy_manage_straddle",
+      "shadow_bot_strategy_shadowstrategy_maybe_add",
+      "shadow_bot_strategy_shadowstrategy_on_bar",
+      "shadow_bot_strategy_shadowstrategy_on_entry",
+      "shadow_bot_strategy_shadowstrategy_on_order_filled",
+      "shadow_bot_strategy_shadowstrategy_on_order_rejected",
+      "shadow_bot_strategy_shadowstrategy_on_position_closed",
+      "shadow_bot_strategy_shadowstrategy_on_start",
+      "shadow_bot_strategy_shadowstrategy_on_stop",
+      "shadow_bot_strategy_shadowstrategy_on_timer",
+      "shadow_bot_strategy_shadowstrategy_place_straddle",
+      "shadow_bot_strategy_shadowstrategy_publish",
+      "shadow_bot_strategy_shadowstrategy_roll_day",
+      "shadow_bot_strategy_shadowstrategy_set_stop",
+      "strategy"
+    ],
+    "2": [
+      "basemodel",
+      "dashboard_app",
+      "dashboard_app_alive",
+      "dashboard_app_bot_start",
+      "dashboard_app_bot_stop",
+      "dashboard_app_botparams",
+      "dashboard_app_command_1925f7",
+      "dashboard_app_command_890189",
+      "dashboard_app_fetchparams",
+      "dashboard_app_index",
+      "dashboard_app_logs",
+      "dashboard_app_rationale_1",
+      "dashboard_app_research_fetch",
+      "dashboard_app_research_sweep",
+      "dashboard_app_research_top",
+      "dashboard_app_spawn",
+      "dashboard_app_stop",
+      "fastapi",
+      "fastapi_responses",
+      "get",
+      "post",
+      "pydantic",
+      "signal",
+      "subprocess"
+    ],
+    "3": [
+      "dashboard_index_api_command",
+      "dashboard_index_api_state",
+      "dashboard_index_bot_start",
+      "dashboard_index_bot_stop",
+      "dashboard_index_control_panel",
+      "dashboard_index_flatten",
+      "dashboard_index_kill_switch",
+      "dashboard_index_pause",
+      "dashboard_index_research_fetch",
+      "dashboard_index_research_sweep",
+      "dashboard_index_resume",
+      "dashboard_index_strategy_params",
+      "readme_binance_usdtm_futures",
+      "readme_known_limits",
+      "readme_nautilus_trader",
+      "readme_research_workflow",
+      "readme_safety_controls",
+      "readme_shadow_bot",
+      "readme_testnet_gate",
+      "readme_vectorbt",
+      "requirements_fastapi",
+      "requirements_nautilus_trader",
+      "requirements_uvicorn",
+      "requirements_vectorbt"
+    ],
+    "4": [
+      "argparse",
+      "backtest_main",
+      "backtest_py_dataframe",
+      "backtest_synthetic",
+      "itertools",
+      "numpy",
+      "pandas",
+      "pathlib",
+      "requests",
+      "research_fetch_data",
+      "research_fetch_data_fetch",
+      "research_fetch_data_py_dataframe",
+      "research_fetch_data_rationale_1",
+      "research_sweep",
+      "research_sweep_load",
+      "research_sweep_main",
+      "research_sweep_py_dataframe",
+      "research_sweep_rationale_1",
+      "research_sweep_run_one",
+      "vectorbt"
+    ],
+    "5": [
+      "dashboard_app_state",
+      "json",
+      "os",
+      "path",
+      "shadow_bot_control",
+      "shadow_bot_control_atomic_write",
+      "shadow_bot_control_rationale_1",
+      "shadow_bot_control_rationale_43",
+      "shadow_bot_control_read",
+      "shadow_bot_control_read_state",
+      "shadow_bot_control_send_command",
+      "shadow_bot_control_write_state",
+      "time"
+    ],
+    "6": [
+      "shadow_timemachine_integration_plan_and_prompt_en_arch",
+      "shadow_timemachine_integration_plan_and_prompt_en_kronos",
+      "shadow_timemachine_integration_plan_and_prompt_en_laya",
+      "shadow_timemachine_integration_plan_and_prompt_en_mapie",
+      "shadow_timemachine_integration_plan_and_prompt_en_shadow_timemachine",
+      "shadow_timemachine_integration_plan_and_prompt_en_tick"
+    ],
+    "7": [
+      "shadow_timemachine_integration_plan_and_prompt_en_pysr"
+    ],
+    "8": [
+      "shadow_timemachine_integration_plan_and_prompt_en_vectorbt"
+    ]
+  },
+  "cohesion": {
+    "0": 0.09195402298850575,
+    "1": 0.14153846153846153,
+    "2": 0.14855072463768115,
+    "3": 0.09420289855072464,
+    "4": 0.18421052631578946,
+    "5": 0.28205128205128205,
+    "6": 0.3333333333333333,
+    "7": 1.0,
+    "8": 1.0
+  },
+  "gods": [
+    {
+      "id": "shadow_bot_strategy_shadowstrategy",
+      "label": "ShadowStrategy",
+      "degree": 24
+    },
+    {
+      "id": "dashboard_index_control_panel",
+      "label": "Dashboard Control Panel",
+      "degree": 9
+    },
+    {
+      "id": "shadow_bot_strategy_shadowconfig",
+      "label": "ShadowConfig",
+      "degree": 7
+    },
+    {
+      "id": "research_sweep_main",
+      "label": "main()",
+      "degree": 7
+    },
+    {
+      "id": "run_live_main",
+      "label": "main()",
+      "degree": 6
+    },
+    {
+      "id": "dashboard_app_spawn",
+      "label": "_spawn()",
+      "degree": 6
+    },
+    {
+      "id": "backtest_main",
+      "label": "main()",
+      "degree": 6
+    },
+    {
+      "id": "shadow_bot_control_atomic_write",
+      "label": "_atomic_write()",
+      "degree": 6
+    },
+    {
+      "id": "readme_shadow_bot",
+      "label": "Shadow Bot",
+      "degree": 6
+    },
+    {
+      "id": "backtest_synthetic",
+      "label": "synthetic()",
+      "degree": 5
+    }
+  ],
+  "surprises": [
+    {
+      "source": "fastapi package",
+      "target": "Dashboard Control Panel",
+      "source_files": [
+        "requirements.txt",
+        "dashboard/index.html"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `fastapi package` unexpectedly reaches hub `Dashboard Control Panel`"
+    },
+    {
+      "source": "uvicorn package",
+      "target": "Dashboard Control Panel",
+      "source_files": [
+        "requirements.txt",
+        "dashboard/index.html"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `uvicorn package` unexpectedly reaches hub `Dashboard Control Panel`"
+    },
+    {
+      "source": "main()",
+      "target": "ShadowConfig",
+      "source_files": [
+        "backtest.py",
+        "shadow_bot/strategy.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "main()",
+      "target": "ShadowStrategy",
+      "source_files": [
+        "backtest.py",
+        "shadow_bot/strategy.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "main()",
+      "target": "ShadowStrategy",
+      "source_files": [
+        "run_live.py",
+        "shadow_bot/strategy.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `ShadowStrategy` connect `Shadow Strategy Engine` to `Nautilus Backtest Live`, `Research Data Sweep`?",
+      "why": "High betweenness centrality (0.218) - this node is a cross-community bridge."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 3 inferred relationships involving `Dashboard Control Panel` (e.g. with `Shadow Bot` and `fastapi package`) actually correct?",
+      "why": "`Dashboard Control Panel` has 3 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `POST /api/bot/stop`, `Pause Command`, `POST /api/research/fetch` to the rest of the system?",
+      "why": "19 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Nautilus Backtest Live` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.09195402298850575 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `main()` connect `Nautilus Backtest Live` to `Shadow Strategy Engine`, `Research Data Sweep`, `Bot Control Channel`?",
+      "why": "High betweenness centrality (0.025) - this node is a cross-community bridge."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Shadow Strategy Engine` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.14153846153846153 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `main()` connect `Research Data Sweep` to `Nautilus Backtest Live`, `Shadow Strategy Engine`?",
+      "why": "High betweenness centrality (0.020) - this node is a cross-community bridge."
+    }
+  ]
+}
