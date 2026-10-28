@@ -1,0 +1,74 @@
+{
+  "backtest.py": {
+    "mtime": 1792679747.4993176,
+    "seen": 1792680412.100636,
+    "ast_hash": "1b215967e26d3f394490d469d98585e6",
+    "semantic_hash": "1b215967e26d3f394490d469d98585e6"
+  },
+  "dashboard/app.py": {
+    "mtime": 1792679748.2938378,
+    "seen": 1792680412.100636,
+    "ast_hash": "33cfc0a57e4eedbb03e979631cedc1e0",
+    "semantic_hash": "33cfc0a57e4eedbb03e979631cedc1e0"
+  },
+  "research/fetch_data.py": {
+    "mtime": 1792679747.7675626,
+    "seen": 1792680412.100636,
+    "ast_hash": "ee9917fd4657fb146fe53b32a844fb2e",
+    "semantic_hash": "ee9917fd4657fb146fe53b32a844fb2e"
+  },
+  "research/sweep.py": {
+    "mtime": 1792679747.8352716,
+    "seen": 1792680412.100636,
+    "ast_hash": "a950bc30f1473be182963d297cb3409f",
+    "semantic_hash": "a950bc30f1473be182963d297cb3409f"
+  },
+  "run_live.py": {
+    "mtime": 1792681375.2727644,
+    "seen": 1793150456.8543699,
+    "ast_hash": "d1c64ee17c5606ce6264aced38d807dc",
+    "semantic_hash": "d1c64ee17c5606ce6264aced38d807dc"
+  },
+  "shadow_bot/__init__.py": {
+    "mtime": 1792679747.9533226,
+    "seen": 1792680412.100636,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "shadow_bot/control.py": {
+    "mtime": 1792679748.0916703,
+    "seen": 1792680412.100636,
+    "ast_hash": "d699f93995b7c559ffd564221b69a917",
+    "semantic_hash": "d699f93995b7c559ffd564221b69a917"
+  },
+  "shadow_bot/strategy.py": {
+    "mtime": 1792681240.40022,
+    "seen": 1793150456.8553693,
+    "ast_hash": "fb79800a8a665c08475a1c7b30c790e2",
+    "semantic_hash": "fb79800a8a665c08475a1c7b30c790e2"
+  },
+  "README.md": {
+    "mtime": 1792679747.5458026,
+    "seen": 1792680412.100636,
+    "ast_hash": "540dbd862b98ac3fe8be90d8003e4d0a",
+    "semantic_hash": "540dbd862b98ac3fe8be90d8003e4d0a"
+  },
+  "dashboard/index.html": {
+    "mtime": 1792679748.2032716,
+    "seen": 1792680412.100636,
+    "ast_hash": "105e3db24c68d5ef943edffe00399c24",
+    "semantic_hash": "105e3db24c68d5ef943edffe00399c24"
+  },
+  "requirements.txt": {
+    "mtime": 1792679747.4224753,
+    "seen": 1792680412.100636,
+    "ast_hash": "1aac2c73d1fd67b121795c13e60fe179",
+    "semantic_hash": "1aac2c73d1fd67b121795c13e60fe179"
+  },
+  "Shadow_Timemachine_Integration_Plan_and_Prompt_EN.md": {
+    "mtime": 1793149203.5313182,
+    "seen": 1793150456.8553693,
+    "ast_hash": "7aa47ab8da6f89cd9fb18c41586dbb51",
+    "semantic_hash": "7aa47ab8da6f89cd9fb18c41586dbb51"
+  }
+}
