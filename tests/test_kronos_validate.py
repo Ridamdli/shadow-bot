@@ -1,7 +1,10 @@
 import contextlib
 import io
+import subprocess
+import sys
 import unittest
 from unittest.mock import patch
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -25,6 +28,20 @@ def make_history(rows: int = 4_333) -> pd.DataFrame:
 
 
 class KronosValidationTests(unittest.TestCase):
+    def test_script_help_runs_from_repository_root_without_model_loading(self) -> None:
+        repository_root = Path(__file__).resolve().parents[1]
+        script = repository_root / "research" / "kronos_validate.py"
+        result = subprocess.run(
+            [sys.executable, str(script), "--help"],
+            cwd=repository_root,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("--sample-count", result.stdout)
+
     def test_select_origins_returns_latest_and_two_daily_origins(self) -> None:
         history = make_history()
         horizon = 12

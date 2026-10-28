@@ -1,14 +1,19 @@
 from __future__ import annotations
 
 import argparse
+import sys
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
+REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
+if str(REPOSITORY_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPOSITORY_ROOT))
+
 from shadow_bot.signals.kronos_forecast import forecast_paths
 
-DATA = Path(__file__).resolve().parent.parent / "data" / "BTCUSDT_1m.csv"
+DATA = REPOSITORY_ROOT / "data" / "BTCUSDT_1m.csv"
 _OHLCV_COLUMNS = ("open", "high", "low", "close", "volume")
 _MINUTES_PER_DAY = 1_440
 
