@@ -27,6 +27,13 @@ and caches `NeoQuasar/Kronos-small` and its tokenizer from Hugging Face.
 Forecasts are research-only and are not connected to the strategy or live
 trading.
 
+For the optional GARCH volatility forecaster, install
+`python -m pip install -r requirements-volatility.txt` and run
+`python research/vol_forecast_validate.py --csv data/BTCUSDT_1m.csv`. The
+walk-forward validator fits on the preceding 30 days, refits daily, and reports
+held-out volatility errors. These forecasts are research-only and are not
+connected to the strategy or live trading.
+
 ## Workflow (do it in this order)
 1. `python research/fetch_data.py --symbol BTCUSDT --days 90`
 2. `python research/sweep.py --csv data/BTCUSDT_1m.csv`
